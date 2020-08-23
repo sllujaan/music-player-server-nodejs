@@ -17,7 +17,7 @@
 
 
 const { _file } = require('../business/files/file');
-const { DIR_URL } = require('../business/assets');
+const { DIR_URL, LIST_PATH } = require('../business/assets');
 const { _validator } = require('../validator/validator');
 
 var LIST = [1, 2, 3];
@@ -99,7 +99,44 @@ const getTags = async (pathList) => {
 
 
 
-initList()
+const initListFromFile = () => {
+    //initList()
+    _file.readListFromFile(LIST_PATH)
+    .then(list => {
+        shuffle(list);
+        LIST = list;
+        IS_LIST_READY = true;
+        console.log('list initiated From File.');
+    })
+    .catch(err => {
+        console.log('ERROR:: => ', err);
+    })
+}
+
+
+const shuffle = (array) => {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
+
+
+
+initListFromFile();
+
 
 
 module.exports = {_getList, IS_LIST_READY, isListReady, searchList, initList}

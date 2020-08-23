@@ -103,6 +103,23 @@ class FILE {
         return false;
     }
 
+
+    /**
+     * read list from the given file.
+     * @param {string} filePath 
+     */
+    readListFromFile = (filePath) => {
+        return new Promise((resolve, reject) => {
+            fs.readFile(filePath, (err, data) => {
+                if(err) return reject(`Failed To read the list from file => ${filePath}`);
+                return resolve(JSON.parse(data));
+            })
+        })
+        
+    }
+
+
+
 }
 
 
@@ -157,7 +174,7 @@ var getTag = async (rootPath, musicName) => {
                 const {title, artist, album, year, genre, image} = tag
                 const name = path.basename(musicName)
                 var coverPath = ``
-                //if image compress it and save it for later use
+                //if image, compress it and save it for later use.
                 if(image && image.imageBuffer) {
                     await _file.compressImage(image.imageBuffer, `${COMPRESSED_IMAGES_PATH + "/cover/" + musicName}.jpg`)
                     coverPath = `cover${musicName}.jpg`;
@@ -168,7 +185,12 @@ var getTag = async (rootPath, musicName) => {
             return resolve({})
         })
     })
+
 }
+
+
+
+
 
 
 const _file = new FILE()

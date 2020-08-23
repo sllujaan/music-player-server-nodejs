@@ -27,6 +27,8 @@ const TEMP_CONVERT_PATH_FFMPEG = assets + '/TEMP-ffmpeg/';
 const DIR_URL = assets+'music/';
 const TEMP_DIR_URL = assets+'tempMusic/';
 const FILE_EXTENSIONS_REGEX = /.mp3|wma/gi;
+const NEW_DIR_URL = 'C:/Users/Subhan/nodeProjects/assets/music-player/music';
+const LIST_PATH = assets+'music/list.txt';
 
 //console.log(DIR_URL);
-module.exports = {DIR_URL, FILE_EXTENSIONS_REGEX, COMPRESSED_IMAGES_PATH, MANIFESTS_PATH, TEMP_CONVERT_PATH_FFMPEG, TEMP_DIR_URL}
+module.exports = {DIR_URL, FILE_EXTENSIONS_REGEX, COMPRESSED_IMAGES_PATH, MANIFESTS_PATH, TEMP_CONVERT_PATH_FFMPEG, TEMP_DIR_URL, NEW_DIR_URL, LIST_PATH}
