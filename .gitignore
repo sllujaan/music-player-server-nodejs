@@ -1,0 +1,4 @@
+node_modules
+src/server/assets/TEMP-ffmpeg/*
+packager.exe
+ffmpeg.exe
